@@ -4,7 +4,7 @@ const NotesContext = createContext();
 
 export const NotesProvider = ({ children }) => {
     const [notes, setNotes] = useState([]);
-    const [backgroundImage, setBackgroundImage] = useState(null); // Store background image URI
+    const [backgroundImage, setBackgroundImage] = useState(null);
 
     const addNote = (note) => {
         setNotes((prev) => [{ ...note, tags: note.tags || [] }, ...prev]);
