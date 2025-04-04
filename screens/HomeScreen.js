@@ -23,14 +23,12 @@ const HomeScreen = () => {
     const [editingIndex, setEditingIndex] = useState(null);
     const [editText, setEditText] = useState('');
 
-    // Filter notes based on search query (title or tags)
     const filteredNotes = notes.filter(
         (note) =>
             note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             note.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
     );
 
-    // Pagination logic
     const totalPages = Math.ceil(filteredNotes.length / NOTES_PER_PAGE);
     const paginatedNotes = filteredNotes.slice(
         (currentPage - 1) * NOTES_PER_PAGE,
@@ -54,12 +52,11 @@ const HomeScreen = () => {
     };
 
     const pickBackgroundImage = async () => {
-        // No permissions request is necessary for launching the image library
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images, // Only images
+       let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,
-            aspect: [4, 3], // Aspect ratio as per documentation
-            quality: 1, // Max quality
+            aspect: [4, 3],
+            quality: 1,
         });
 
         console.log(result);
@@ -190,7 +187,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: 'rgba(245, 245, 245, 0.8)', // Semi-transparent overlay
+        backgroundColor: 'rgba(245, 245, 245, 0.8)',
     },
     title: {
         fontSize: 28,

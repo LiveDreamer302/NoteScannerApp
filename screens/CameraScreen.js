@@ -7,7 +7,7 @@ import { useNotes } from '../context/NotesContext';
 const CameraScreen = () => {
     const cameraRef = useRef(null);
     const [title, setTitle] = useState('');
-    const [tags, setTags] = useState(''); // Tags as comma-separated string
+    const [tags, setTags] = useState('');
     const [permission, requestPermission] = useCameraPermissions();
     const { addNote } = useNotes();
     const navigation = useNavigation();
@@ -25,7 +25,7 @@ const CameraScreen = () => {
     const takePicture = async () => {
         if (cameraRef.current) {
             const photo = await cameraRef.current.takePictureAsync();
-            const tagsArray = tags.split(',').map(tag => tag.trim()).filter(tag => tag); // Convert to array
+            const tagsArray = tags.split(',').map(tag => tag.trim()).filter(tag => tag);
             addNote({ uri: photo.uri, title, tags: tagsArray });
             navigation.goBack();
         }
