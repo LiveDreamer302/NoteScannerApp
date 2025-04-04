@@ -12,6 +12,14 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "This app accesses your photos to let you choose images from your library."
+        }
+      ]
+    ],
     "ios": {
       "supportsTablet": true
     },

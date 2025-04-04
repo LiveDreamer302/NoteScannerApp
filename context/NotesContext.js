@@ -4,9 +4,10 @@ const NotesContext = createContext();
 
 export const NotesProvider = ({ children }) => {
     const [notes, setNotes] = useState([]);
+    const [backgroundImage, setBackgroundImage] = useState(null); // Store background image URI
 
     const addNote = (note) => {
-        setNotes((prev) => [note, ...prev]);
+        setNotes((prev) => [{ ...note, tags: note.tags || [] }, ...prev]);
     };
 
     const deleteNote = (index) => {
@@ -19,8 +20,14 @@ export const NotesProvider = ({ children }) => {
         );
     };
 
+    const updateBackgroundImage = (uri) => {
+        setBackgroundImage(uri);
+    };
+
     return (
-        <NotesContext.Provider value={{ notes, addNote, deleteNote, editNote }}>
+        <NotesContext.Provider
+            value={{ notes, addNote, deleteNote, editNote, backgroundImage, updateBackgroundImage }}
+        >
             {children}
         </NotesContext.Provider>
     );
